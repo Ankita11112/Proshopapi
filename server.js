@@ -14,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 connectDB();
 
+
 app.use("/api/products", products);
 app.use("/api/user", users);
 app.use("/api/cart", carts);
@@ -24,3 +25,5 @@ app.use(errorHandler);
 app.listen(5000, () =>
   console.log("server is running on port 5000".yellow.bold.underline)
 );
+
+
