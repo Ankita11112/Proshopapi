@@ -2,7 +2,6 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import User from "../models/UserModel.js";
 import expressAsyncHandler from "express-async-handler";
-
 dotenv.config();
 
 const userAuth = expressAsyncHandler(async (req, res, next) => {
@@ -11,9 +10,9 @@ const userAuth = expressAsyncHandler(async (req, res, next) => {
   let { id } = jwt.verify(token.split(" ")[1], process.env.SECRET_KEY);
   if (!id) throw new Error("invlid token");
 
-  const user = await User.findOne({ _id: id });
-  req.user = { ...user, _id: id };
-  next();
+  const user = await User.findOne({ _id: id }); 
+  req.user = { ...user, _id: id };       
+  next();                                                                        
 });
 
 const adminAuth = expressAsyncHandler(async (req, res, next) => {
